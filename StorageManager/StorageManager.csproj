@@ -205,10 +205,10 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRole.cs" />
-    <Compile Include="NetFrameworkDemo\Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PasswordHasher.cs" />
     <Compile Include="Services\TokenService.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

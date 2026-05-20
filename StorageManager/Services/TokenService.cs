@@ -5,10 +5,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using WarehouseApp.Models;
+using StorageManager.Models;
 using StorageManager.Models;
 
-namespace WarehouseApp.Services
+namespace StorageManager.Services
 {
     public class TokenService
     {

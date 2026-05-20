@@ -1,0 +1,2 @@
+D:\flalfkj\WarehouseApp\StorageManager\obj\Debug\StorageManager.csproj.AssemblyReference.cache
+D:\flalfkj\WarehouseApp\StorageManager\obj\Debug\StorageManager.csproj.CoreCompileInputs.cache

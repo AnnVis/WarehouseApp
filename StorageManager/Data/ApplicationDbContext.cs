@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using WarehouseApp.Models;
+using StorageManager.Models;
 
-namespace WarehouseApp.Data
+namespace StorageManager.Data
 {
     public class ApplicationDbContext : DbContext
     {

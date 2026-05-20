@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WarehouseApp.Models;
+using StorageManager.Models;
 
 namespace StorageManager.Models
 {

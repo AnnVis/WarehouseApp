@@ -4,15 +4,13 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-using WarehouseApp.Data;
-using WarehouseApp.Models;
-using WarehouseApp.Services;
-using System.Security.Claims;
-using System.Web;
+using StorageManager.Data;
 using StorageManager.Models;
 using StorageManager.Services;
+using System.Security.Claims;
+using System.Web;
 
-namespace WarehouseApp.Controllers
+namespace StorageManager.Controllers
 {
     [RoutePrefix("api/account")]
     public class AccountController : ApiController
