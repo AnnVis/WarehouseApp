@@ -8,6 +8,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Jwt;
 using Owin;
 using StorageManager;
+using System.Web.Http.Owin;
 
 [assembly: OwinStartup(typeof(StorageManager.StorageManager.Startup))]
 

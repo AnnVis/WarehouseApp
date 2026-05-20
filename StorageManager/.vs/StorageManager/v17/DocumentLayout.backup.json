@@ -3,8 +3,39 @@
   "WorkspaceRootPath": "D:\\flalfkj\\WarehouseApp\\StorageManager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|D:\\flalfkj\\WarehouseApp\\StorageManager\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E6C459CD-9BB9-4F8A-9C8C-5D9B25E77F4D}|..\\StorageManager.Tests\\StorageManager.Tests.csproj|d:\\flalfkj\\warehouseapp\\storagemanager.tests\\controllersintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|D:\\flalfkj\\WarehouseApp\\StorageManager\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|D:\\flalfkj\\WarehouseApp\\StorageManager\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|d:\\flalfkj\\warehouseapp\\storagemanager\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|d:\\flalfkj\\warehouseapp\\storagemanager\\controllers\\itemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:controllers\\itemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|d:\\flalfkj\\warehouseapp\\storagemanager\\models\\itemrequests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:models\\itemrequests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|d:\\flalfkj\\warehouseapp\\storagemanager\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|d:\\flalfkj\\warehouseapp\\storagemanager\\models\\userrequests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:models\\userrequests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|d:\\flalfkj\\warehouseapp\\storagemanager\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|D:\\flalfkj\\WarehouseApp\\StorageManager\\services\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,20 +62,12 @@
       "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:models\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|D:\\flalfkj\\WarehouseApp\\StorageManager\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|d:\\flalfkj\\warehouseapp\\storagemanager\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|D:\\flalfkj\\WarehouseApp\\StorageManager\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|d:\\flalfkj\\warehouseapp\\storagemanager\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|D:\\flalfkj\\WarehouseApp\\StorageManager\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|d:\\flalfkj\\warehouseapp\\storagemanager\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{256C42C9-40C4-4D60-AE60-193C8B64584B}|StorageManager.csproj|solutionrelative:startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,11 +77,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
+              "Title": "ControllersIntegrationTests.cs",
+              "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager.Tests\\ControllersIntegrationTests.cs",
+              "RelativeDocumentMoniker": "..\\StorageManager.Tests\\ControllersIntegrationTests.cs",
+              "ToolTip": "D:\\flalfkj\\WarehouseApp\\StorageManager.Tests\\ControllersIntegrationTests.cs",
+              "RelativeToolTip": "..\\StorageManager.Tests\\ControllersIntegrationTests.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAgwAIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T10:17:04.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ItemsController.cs",
+              "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Controllers\\ItemsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ItemsController.cs",
+              "ToolTip": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Controllers\\ItemsController.cs",
+              "RelativeToolTip": "Controllers\\ItemsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T09:52:17.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ItemRequests.cs",
+              "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Models\\ItemRequests.cs",
+              "RelativeDocumentMoniker": "Models\\ItemRequests.cs",
+              "ToolTip": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Models\\ItemRequests.cs",
+              "RelativeToolTip": "Models\\ItemRequests.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAgwEkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T09:52:00.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Item.cs",
+              "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Models\\Item.cs",
+              "RelativeDocumentMoniker": "Models\\Item.cs",
+              "ToolTip": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Models\\Item.cs",
+              "RelativeToolTip": "Models\\Item.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwCYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T09:51:30.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserRequests.cs",
+              "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Models\\UserRequests.cs",
+              "RelativeDocumentMoniker": "Models\\UserRequests.cs",
+              "ToolTip": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Models\\UserRequests.cs",
+              "RelativeToolTip": "Models\\UserRequests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T09:44:45.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwLkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T09:44:22.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "Web.config",
               "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Web.config",
               "RelativeDocumentMoniker": "Web.config",
@@ -71,20 +172,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "Startup.cs",
               "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Startup.cs",
               "RelativeDocumentMoniker": "Startup.cs",
               "ToolTip": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Startup.cs",
               "RelativeToolTip": "Startup.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAgwDYAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwDUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-20T09:18:38.91Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
@@ -92,25 +193,24 @@
               "RelativeToolTip": "Controllers\\AccountController.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAQwAYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T03:01:11.647Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T03:01:11.647Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "TokenService.cs",
               "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Services\\TokenService.cs",
               "RelativeDocumentMoniker": "Services\\TokenService.cs",
               "ToolTip": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Services\\TokenService.cs",
               "RelativeToolTip": "Services\\TokenService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwDcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-20T02:59:36.201Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "PasswordHasher.cs",
               "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Services\\PasswordHasher.cs",
               "RelativeDocumentMoniker": "Services\\PasswordHasher.cs",
@@ -118,25 +218,24 @@
               "RelativeToolTip": "Services\\PasswordHasher.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T02:58:43.954Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T02:58:43.954Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
               "ToolTip": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-20T02:57:39.813Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Models\\LoginRequest.cs",
               "RelativeDocumentMoniker": "Models\\LoginRequest.cs",
@@ -144,12 +243,11 @@
               "RelativeToolTip": "Models\\LoginRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T02:54:53.828Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T02:54:53.828Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "RegisterRequest.cs",
               "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Models\\RegisterRequest.cs",
               "RelativeDocumentMoniker": "Models\\RegisterRequest.cs",
@@ -157,12 +255,11 @@
               "RelativeToolTip": "Models\\RegisterRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T02:53:20.911Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T02:53:20.911Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 10,
               "Title": "UserRole.cs",
               "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Models\\UserRole.cs",
               "RelativeDocumentMoniker": "Models\\UserRole.cs",
@@ -170,12 +267,11 @@
               "RelativeToolTip": "Models\\UserRole.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T02:52:33.279Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T02:52:33.279Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "Role.cs",
               "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Models\\Role.cs",
               "RelativeDocumentMoniker": "Models\\Role.cs",
@@ -183,12 +279,11 @@
               "RelativeToolTip": "Models\\Role.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T02:51:59.796Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T02:51:59.796Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\flalfkj\\WarehouseApp\\StorageManager\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
@@ -196,8 +291,7 @@
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-20T02:51:18.488Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-20T02:51:18.488Z"
             }
           ]
         }

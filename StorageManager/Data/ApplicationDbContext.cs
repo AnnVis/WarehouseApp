@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using StorageManager.Models;
 
 namespace StorageManager.Data
 {
@@ -18,6 +17,9 @@ namespace StorageManager.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+
+        // Added items DbSet
+        public DbSet<Item> Items { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

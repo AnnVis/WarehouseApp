@@ -6,7 +6,6 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using StorageManager.Models;
-using StorageManager.Models;
 
 namespace StorageManager.Services
 {
