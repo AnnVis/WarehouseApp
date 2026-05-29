@@ -14,11 +14,9 @@ namespace StorageManager.Controllers
     {
         private readonly IUserService _userService;
 
-        public UsersController()
+        public UsersController(IUserService userService)
         {
-            var db = new ApplicationDbContext();
-
-            _userService = new UserService(db);
+            _userService = userService;
         }
 
         // GET: api/users

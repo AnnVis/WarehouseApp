@@ -1,66 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using StorageManager.Data;
 using StorageManager.Models;
+using StorageManager.Repositories.Interfaces;
 using StorageManager.Services.Interfaces;
 
 namespace StorageManager.Services
 {
     public class UserService : IUserService
     {
-        private readonly ApplicationDbContext _db;
+        private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
 
-        public UserService(ApplicationDbContext db)
+        public UserService(
+            IUserRepository userRepository,
+            IRoleRepository roleRepository)
         {
-            _db = db;
+            _userRepository = userRepository;
+            _roleRepository = roleRepository;
         }
 
         public async Task<List<UserDto>> GetAllAsync()
         {
-            return await _db.Users
-                .Include(u => u.UserRoles.Select(ur => ur.Role))
-                .Select(u => new UserDto
-                {
-                    Id = u.Id,
-                    Username = u.Username,
-                    Email = u.Email,
-                    Phone = u.Phone,
-                    Address = u.Address,
-                    CreatedAt = u.CreatedAt,
-                    Roles = u.UserRoles.Select(ur => ur.Role.Name).ToList()
-                })
-                .ToListAsync();
+            var users =
+                await _userRepository.GetAllAsync();
+
+            return users.Select(MapToDto).ToList();
         }
 
         public async Task<UserDto> GetByIdAsync(int id)
         {
-            return await _db.Users
-                .Include(u => u.UserRoles.Select(ur => ur.Role))
-                .Where(u => u.Id == id)
-                .Select(u => new UserDto
-                {
-                    Id = u.Id,
-                    Username = u.Username,
-                    Email = u.Email,
-                    Phone = u.Phone,
-                    Address = u.Address,
-                    CreatedAt = u.CreatedAt,
-                    Roles = u.UserRoles.Select(ur => ur.Role.Name).ToList()
-                })
-                .FirstOrDefaultAsync();
+            var user =
+                await _userRepository.GetByIdAsync(id);
+
+            return user == null
+                ? null
+                : MapToDto(user);
         }
 
-        public async Task<UserDto> CreateAsync(CreateUserRequest model)
+        public async Task<UserDto> CreateAsync(
+            CreateUserRequest model)
         {
-            var exists = await _db.Users.AnyAsync(u =>
-                u.Username == model.Username ||
-                u.Email == model.Email);
+            var exists =
+                await _userRepository.ExistsAsync(
+                    model.Username,
+                    model.Email);
 
             if (exists)
-                throw new Exception("Username or email already in use.");
+            {
+                throw new Exception(
+                    "Username or email already in use.");
+            }
 
             PasswordHasher.CreatePasswordHash(
                 model.Password,
@@ -77,17 +68,17 @@ namespace StorageManager.Services
                 PasswordSalt = salt
             };
 
-            _db.Users.Add(user);
+            await _userRepository.AddAsync(user);
 
-            await _db.SaveChangesAsync();
+            await _userRepository.SaveChangesAsync();
 
-            // Assign roles
-            if (model.Roles != null && model.Roles.Any())
+            if (model.Roles != null)
             {
                 foreach (var roleName in model.Roles.Distinct())
                 {
-                    var role = await _db.Roles
-                        .FirstOrDefaultAsync(r => r.Name == roleName);
+                    var role =
+                        await _roleRepository
+                            .GetByNameAsync(roleName);
 
                     if (role == null)
                     {
@@ -96,70 +87,67 @@ namespace StorageManager.Services
                             Name = roleName
                         };
 
-                        _db.Roles.Add(role);
+                        await _roleRepository
+                            .AddAsync(role);
 
-                        await _db.SaveChangesAsync();
+                        await _roleRepository
+                            .SaveChangesAsync();
                     }
 
-                    _db.UserRoles.Add(new UserRole
+                    user.UserRoles.Add(new UserRole
                     {
                         UserId = user.Id,
                         RoleId = role.Id
                     });
                 }
 
-                await _db.SaveChangesAsync();
+                await _userRepository.SaveChangesAsync();
             }
 
-            return await GetByIdAsync(user.Id);
+            return MapToDto(user);
         }
 
-        public async Task<bool> UpdateAsync(int id, UpdateUserRequest model)
+        public async Task<bool> UpdateAsync(
+            int id,
+            UpdateUserRequest model)
         {
-            var user = await _db.Users
-                .Include(u => u.UserRoles)
-                .FirstOrDefaultAsync(u => u.Id == id);
+            var user =
+                await _userRepository.GetByIdAsync(id);
 
             if (user == null)
                 return false;
 
-            // Username uniqueness
-            if (!string.Equals(
-                user.Username,
-                model.Username,
-                StringComparison.OrdinalIgnoreCase))
+            var usernameTaken =
+                await _userRepository
+                    .UsernameExistsAsync(
+                        model.Username,
+                        id);
+
+            if (usernameTaken)
             {
-                var usernameTaken = await _db.Users.AnyAsync(u =>
-                    u.Username == model.Username &&
-                    u.Id != id);
-
-                if (usernameTaken)
-                    throw new Exception("Username already in use.");
-
-                user.Username = model.Username;
+                throw new Exception(
+                    "Username already in use.");
             }
 
-            // Email uniqueness
-            if (!string.Equals(
-                user.Email,
-                model.Email,
-                StringComparison.OrdinalIgnoreCase))
+            var emailTaken =
+                await _userRepository
+                    .EmailExistsAsync(
+                        model.Email,
+                        id);
+
+            if (emailTaken)
             {
-                var emailTaken = await _db.Users.AnyAsync(u =>
-                    u.Email == model.Email &&
-                    u.Id != id);
-
-                if (emailTaken)
-                    throw new Exception("Email already in use.");
-
-                user.Email = model.Email;
+                throw new Exception(
+                    "Email already in use.");
             }
 
+            user.Username = model.Username;
+            user.Email = model.Email;
             user.Phone = model.Phone;
             user.Address = model.Address;
 
-            // Update password
-            if (!string.IsNullOrWhiteSpace(model.Password))
+            if (!string.IsNullOrWhiteSpace(
+                model.Password))
             {
                 PasswordHasher.CreatePasswordHash(
                     model.Password,
@@ -170,18 +158,15 @@ namespace StorageManager.Services
                 user.PasswordSalt = salt;
             }
 
-            // Replace roles
+            user.UserRoles.Clear();
+
             if (model.Roles != null)
             {
-                var existingRoles = _db.UserRoles
-                    .Where(ur => ur.UserId == user.Id);
-
-                _db.UserRoles.RemoveRange(existingRoles);
-
-                foreach (var roleName in model.Roles.Distinct())
+                foreach (var roleName in model.Roles)
                 {
-                    var role = await _db.Roles
-                        .FirstOrDefaultAsync(r => r.Name == roleName);
+                    var role =
+                        await _roleRepository
+                            .GetByNameAsync(roleName);
 
                     if (role == null)
                     {
@@ -190,41 +175,56 @@ namespace StorageManager.Services
                             Name = roleName
                         };
 
-                        _db.Roles.Add(role);
+                        await _roleRepository
+                            .AddAsync(role);
 
-                        await _db.SaveChangesAsync();
+                        await _roleRepository
+                            .SaveChangesAsync();
                     }
 
-                    _db.UserRoles.Add(new UserRole
-                    {
-                        UserId = user.Id,
-                        RoleId = role.Id
-                    });
+                    user.UserRoles.Add(
+                        new UserRole
+                        {
+                            UserId = user.Id,
+                            RoleId = role.Id
+                        });
                 }
             }
 
-            await _db.SaveChangesAsync();
+            await _userRepository.SaveChangesAsync();
 
             return true;
         }
 
         public async Task<bool> DeleteAsync(int id)
         {
-            var user = await _db.Users.FindAsync(id);
+            var user =
+                await _userRepository.FindAsync(id);
 
             if (user == null)
                 return false;
 
-            var userRoles = _db.UserRoles
-                .Where(ur => ur.UserId == id);
+            _userRepository.Remove(user);
 
-            _db.UserRoles.RemoveRange(userRoles);
-
-            _db.Users.Remove(user);
-
-            await _db.SaveChangesAsync();
+            await _userRepository.SaveChangesAsync();
 
             return true;
+        }
+
+        private UserDto MapToDto(User user)
+        {
+            return new UserDto
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Email = user.Email,
+                Phone = user.Phone,
+                Address = user.Address,
+                CreatedAt = user.CreatedAt,
+                Roles = user.UserRoles
+                    .Select(ur => ur.Role.Name)
+                    .ToList()
+            };
         }
     }
 }
