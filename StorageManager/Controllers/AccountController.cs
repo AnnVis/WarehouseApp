@@ -16,11 +16,9 @@ namespace StorageManager.Controllers
     {
         private readonly IAccountService _accountService;
 
-        public AccountController()
+        public AccountController(IAccountService accountService)
         {
-            var db = new ApplicationDbContext();
-
-            _accountService = new AccountService(db);
+            _accountService = accountService;
         }
 
         // POST: api/account/register

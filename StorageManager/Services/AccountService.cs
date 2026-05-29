@@ -1,33 +1,40 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using StorageManager.Data;
 using StorageManager.Models;
+using StorageManager.Repositories.Interfaces;
 using StorageManager.Services.Interfaces;
 
 namespace StorageManager.Services
 {
     public class AccountService : IAccountService
     {
-        private readonly ApplicationDbContext _db;
+        private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
         private readonly TokenService _tokenService;
 
-        public AccountService(ApplicationDbContext db)
+        public AccountService(
+            IUserRepository userRepository,
+            IRoleRepository roleRepository)
         {
-            _db = db;
+            _userRepository = userRepository;
+            _roleRepository = roleRepository;
             _tokenService = new TokenService();
         }
 
-        public async Task RegisterAsync(RegisterRequest model)
+        public async Task RegisterAsync(
+            RegisterRequest model)
         {
-            var exists = await _db.Users.AnyAsync(u =>
-                u.Username == model.Username ||
-                u.Email == model.Email);
+            var exists =
+                await _userRepository.ExistsAsync(
+                    model.Username,
+                    model.Email);
 
             if (exists)
+            {
                 throw new Exception(
-                    "Username or email already in use.");
+                    "Username or email already exists.");
+            }
 
             PasswordHasher.CreatePasswordHash(
                 model.Password,
@@ -44,11 +51,13 @@ namespace StorageManager.Services
                 PasswordSalt = salt
             };
 
-            _db.Users.Add(user);
+            await _userRepository.AddAsync(user);
 
-            // Default role
-            var role = await _db.Roles
-                .FirstOrDefaultAsync(r => r.Name == "User");
+            await _userRepository.SaveChangesAsync();
+
+            var role =
+                await _roleRepository
+                    .GetByNameAsync("User");
 
             if (role == null)
             {
@@ -57,43 +66,52 @@ namespace StorageManager.Services
                     Name = "User"
                 };
 
-                _db.Roles.Add(role);
+                await _roleRepository
+                    .AddAsync(role);
 
-                await _db.SaveChangesAsync();
+                await _roleRepository
+                    .SaveChangesAsync();
             }
 
-            _db.UserRoles.Add(new UserRole
+            user.UserRoles.Add(new UserRole
             {
-                User = user,
-                Role = role
+                UserId = user.Id,
+                RoleId = role.Id
             });
 
-            await _db.SaveChangesAsync();
+            await _userRepository.SaveChangesAsync();
         }
 
         public async Task<LoginResponse> LoginAsync(
             LoginRequest model)
         {
-            var user = await _db.Users
-                .Include(u => u.UserRoles.Select(ur => ur.Role))
-                .FirstOrDefaultAsync(u =>
-                    u.Username == model.UsernameOrEmail ||
-                    u.Email == model.UsernameOrEmail);
+            var user =
+                await _userRepository
+                    .GetByUsernameOrEmailAsync(
+                        model.UsernameOrEmail);
 
             if (user == null)
-                throw new Exception("Invalid credentials.");
+            {
+                throw new Exception(
+                    "Invalid credentials.");
+            }
 
-            var valid = PasswordHasher.VerifyPassword(
-                model.Password,
-                user.PasswordHash,
-                user.PasswordSalt);
+            var valid =
+                PasswordHasher.VerifyPassword(
+                    model.Password,
+                    user.PasswordHash,
+                    user.PasswordSalt);
 
             if (!valid)
-                throw new Exception("Invalid credentials.");
+            {
+                throw new Exception(
+                    "Invalid credentials.");
+            }
 
-            var token = _tokenService.GenerateJwt(
-                user,
-                TimeSpan.FromHours(8));
+            var token =
+                _tokenService.GenerateJwt(
+                    user,
+                    TimeSpan.FromHours(8));
 
             return new LoginResponse
             {
@@ -102,40 +120,47 @@ namespace StorageManager.Services
             };
         }
 
-        public async Task<UserDto> GetCurrentUserAsync(
-            int userId)
+        public async Task<UserDto>
+            GetCurrentUserAsync(int userId)
         {
-            return await _db.Users
-                .Include(u => u.UserRoles.Select(ur => ur.Role))
-                .Where(u => u.Id == userId)
-                .Select(u => new UserDto
-                {
-                    Id = u.Id,
-                    Username = u.Username,
-                    Email = u.Email,
-                    Phone = u.Phone,
-                    Address = u.Address,
-                    CreatedAt = u.CreatedAt,
-                    Roles = u.UserRoles
-                        .Select(ur => ur.Role.Name)
-                        .ToList()
-                })
-                .FirstOrDefaultAsync();
+            var user =
+                await _userRepository
+                    .GetByIdAsync(userId);
+
+            if (user == null)
+                return null;
+
+            return new UserDto
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Email = user.Email,
+                Phone = user.Phone,
+                Address = user.Address,
+                CreatedAt = user.CreatedAt,
+                Roles = user.UserRoles
+                    .Select(ur => ur.Role.Name)
+                    .ToList()
+            };
         }
 
         public async Task AssignRoleAsync(
             int userId,
             string roleName)
         {
-            var user = await _db.Users
-                .Include(u => u.UserRoles)
-                .FirstOrDefaultAsync(u => u.Id == userId);
+            var user =
+                await _userRepository
+                    .GetByIdAsync(userId);
 
             if (user == null)
-                throw new Exception("User not found.");
+            {
+                throw new Exception(
+                    "User not found.");
+            }
 
-            var role = await _db.Roles
-                .FirstOrDefaultAsync(r => r.Name == roleName);
+            var role =
+                await _roleRepository
+                    .GetByNameAsync(roleName);
 
             if (role == null)
             {
@@ -144,23 +169,27 @@ namespace StorageManager.Services
                     Name = roleName
                 };
 
-                _db.Roles.Add(role);
+                await _roleRepository
+                    .AddAsync(role);
 
-                await _db.SaveChangesAsync();
+                await _roleRepository
+                    .SaveChangesAsync();
             }
 
-            var alreadyAssigned = user.UserRoles
+            var exists = user.UserRoles
                 .Any(ur => ur.RoleId == role.Id);
 
-            if (!alreadyAssigned)
+            if (!exists)
             {
-                _db.UserRoles.Add(new UserRole
-                {
-                    UserId = user.Id,
-                    RoleId = role.Id
-                });
+                user.UserRoles.Add(
+                    new UserRole
+                    {
+                        UserId = user.Id,
+                        RoleId = role.Id
+                    });
 
-                await _db.SaveChangesAsync();
+                await _userRepository
+                    .SaveChangesAsync();
             }
         }
     }

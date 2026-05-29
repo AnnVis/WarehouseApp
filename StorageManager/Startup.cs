@@ -1,13 +1,14 @@
-﻿using System;
-using System.Configuration;
-using System.Text;
-using System.Web.Http;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Jwt;
 using Owin;
 using StorageManager;
+using StorageManager.App_Start;
+using System;
+using System.Configuration;
+using System.Text;
+using System.Web.Http;
 using System.Web.Http.Owin;
 
 [assembly: OwinStartup(typeof(StorageManager.StorageManager.Startup))]
@@ -47,6 +48,9 @@ namespace StorageManager.StorageManager
 
             // If you already have WebApiConfig.Register, call it so your routes/controllers are registered:
             WebApiConfig.Register(config);
+
+            //Autofac DI container setup
+            AutofacConfig.Register(config);
 
             // JSON defaults
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;

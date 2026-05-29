@@ -16,11 +16,9 @@ namespace StorageManager.Controllers
     {
         private readonly IItemService _itemService;
 
-        public ItemsController()
+        public ItemsController(IItemService itemService)
         {
-            var db = new ApplicationDbContext();
-
-            _itemService = new ItemService(db);
+            _itemService = itemService;
         }
 
         // GET: api/items
